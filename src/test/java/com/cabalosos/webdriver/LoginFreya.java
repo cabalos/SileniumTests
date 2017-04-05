@@ -12,8 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginFreya {
     //   public static String driverPath = "C:/Program Files/";
 
-
-    public WebDriver login(String email, String password) {
+    public  WebDriver login(String email, String password) {
         //       System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
