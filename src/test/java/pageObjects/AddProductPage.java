@@ -30,11 +30,12 @@ public class AddProductPage {
         return element;
     }
 
-    public static WebElement addAndroidProduct(WebDriver driver){
+ /*   public static WebElement addAndroidProduct(WebDriver driver){
         element= driver.findElement(By.xpath("//img[@alt='android app']"));
         element.click();
         return element;
     }
+ */
 
     public static WebElement clickLeftMenu(WebDriver driver){
         element= driver.findElement(By.xpath("//button[@class='themetoggle_1Zy-o themeneutral_uDC3j themeinverse_2Z8iZ']"));
@@ -54,6 +55,11 @@ public class AddProductPage {
         return element;
     }
 
+    public static WebElement clickAudienceList(WebDriver driver){
+        element= driver.findElement(By.linkText("AUDIENCE LIST"));
+        element.click();
+        return element;
+    }
 
 
 

@@ -1,10 +1,16 @@
 package com.cabalosos.webdriver;
 
+import net.madberry.configurations.ConfigLoader;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pageObjects.LoginPage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by cabal on 07.06.17.
@@ -38,14 +44,30 @@ public class Abstract {
         }
     }
 
-    //method for set cookie
- /*   public static void setCookie(){
-        Cookie ck = new Cookie("Authorization", "3b82974f-e31c-4f29-99a7-ef5af23f6088");
-        driver.manage().addCookie(ck);
+   // method for set cookie
+
+    public void setCookie(String name, String value, String domain, String path, Date expiry) {
+        driver.manage().addCookie(
+                new Cookie(name, value, domain, path, expiry));
     }
-*/
+
+
 
     public static WebDriver driver;
+
+
+    public void logInFreya() {
+        String host= ConfigLoader.config.hosts.get("freyaHost");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("http://"+host);
+        LoginPage.loginField(driver).sendKeys("admin@admin.com");
+        LoginPage.passField(driver).sendKeys("shmadmin");
+        LoginPage.clickSubmit(driver);
+    }
+
+ //   WebDriverWait wait = new WebDriverWait(driver, 60);
+ //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/input[@value='ADD CAMPAIGN' and @class='themeinputElement_27dyY themefilled_1UI7Z']")));
 
 }
 
